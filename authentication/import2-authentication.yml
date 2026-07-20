@@ -1,0 +1,14 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/import2-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: 'HTTP Basic Authentication. Supply the API token as the username and any value
+    (e.g. "X") as the password. Example: curl -u <api_token>:X.'
+  sources:
+  - openapi/import2-openapi.yml
