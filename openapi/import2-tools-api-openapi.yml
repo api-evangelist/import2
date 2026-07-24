@@ -1,0 +1,75 @@
+openapi: 3.0.3
+info:
+  title: Import2 Imports Tools API
+  version: '2.1'
+  description: The Import2 API lets partners and vendors programmatically create and manage automated data migrations between SaaS applications. It exposes the catalog of supported source/destination tools and the lifecycle of an import job — create, list, check status, and accept or reject a sponsored (vendor-paid) migration. Authentication is HTTP Basic using an API token as the username. API tokens are issued to partners on request (partners@import2.com).
+  contact:
+    name: Import2 Partners
+    email: partners@import2.com
+    url: https://partners.import2.com/
+  x-apievangelist-provenance:
+    generated: '2026-07-19'
+    method: generated
+    source: https://import2.github.io/
+    note: Authored faithfully from Import2's published API reference at https://import2.github.io/ (Import2 API v2.1). No provider-published OpenAPI exists; fields, endpoints, auth, error codes, and rate limits transcribed from the public docs. Not fabricated.
+servers:
+- url: https://www.import2.com/api/v2.1
+  description: Production
+- url: https://www.import2.com/api/sandbox
+  description: Sandbox
+security:
+- basicAuth: []
+tags:
+- name: Tools
+  description: Supported source and destination migration tools.
+paths:
+  /tools:
+    get:
+      operationId: listTools
+      summary: List supported tools
+      description: Returns the list of supported data source/destination tools, optionally filtered by product family.
+      tags:
+      - Tools
+      parameters:
+      - name: family
+        in: query
+        required: false
+        description: Filter tools by product family (e.g. crm, helpdesk).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of supported tools.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tool'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid API token.
+    RateLimited:
+      description: Rate limit exceeded (more than 10 requests per second).
+  schemas:
+    Tool:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Machine name of the tool (e.g. "highrise").
+          example: highrise
+        label:
+          type: string
+          description: Human-readable tool label.
+          example: Highrise
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: 'HTTP Basic Authentication. Supply the API token as the username and any value (e.g. "X") as the password. Example: curl -u <api_token>:X.'
