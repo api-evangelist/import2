@@ -1,0 +1,34 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/import2-openapi.yml
+entities:
+  - name: Tool
+    description: A supported source/destination migration tool.
+    fields: [name, label]
+  - name: Import
+    description: A data migration job between a source tool and a destination account.
+    id_field: id
+    fields: [id, token, status, family, items, users]
+  - name: ImportStatus
+    description: Enumerated lifecycle state of an import job.
+    kind: enum
+    values:
+      - Collecting credentials
+      - Waiting to start sample migration
+      - Sample migration in progress
+      - Sample migration completed
+      - Migration in progress
+      - Migration completed
+      - Undo in progress
+      - Migration cleaned
+      - In preparation
+relationships:
+  - from: Import
+    to: Tool
+    type: belongs_to
+    via: source_tool
+    note: An import references the source tool by its machine name.
+  - from: Import
+    to: ImportStatus
+    type: has_one
+    via: status

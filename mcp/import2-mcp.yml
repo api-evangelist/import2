@@ -1,0 +1,29 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: openapi/import2-openapi.yml
+note: >-
+  No official hosted/remote Import2 MCP server was found. This is a candidate tool
+  list derived one-per-operation from the Import2 API v2.1 OpenAPI.
+server:
+  name: import2
+  transport: http
+tools:
+  - name: list_tools
+    description: List supported source/destination migration tools.
+    source_operation: openapi/import2-openapi.yml#listTools
+  - name: create_import
+    description: Create a new data migration (import) job.
+    source_operation: openapi/import2-openapi.yml#createImport
+  - name: list_imports
+    description: List imports for a destination username.
+    source_operation: openapi/import2-openapi.yml#listImports
+  - name: get_import
+    description: Get the status of a single import job.
+    source_operation: openapi/import2-openapi.yml#getImport
+  - name: accept_import_payment
+    description: Accept the sponsored (vendor-paid) migration obligation.
+    source_operation: openapi/import2-openapi.yml#acceptImportPayment
+  - name: reject_import_payment
+    description: Reject the sponsored (vendor-paid) migration obligation.
+    source_operation: openapi/import2-openapi.yml#rejectImportPayment

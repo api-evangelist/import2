@@ -1,0 +1,26 @@
+generated: '2026-07-19'
+method: searched
+source: https://import2.github.io/
+authentication:
+  style: http-basic
+  detail: API token supplied as the Basic-auth username; any value as password (e.g. curl -u <token>:X).
+  ref: authentication/import2-authentication.yml
+idempotency:
+  supported: false
+  note: No idempotency-key header/parameter is documented.
+pagination:
+  supported: false
+  note: No pagination scheme is documented; list endpoints return full arrays.
+versioning:
+  style: uri-path
+  current: v2.1
+  ref: lifecycle/import2-lifecycle.yml
+error_envelope:
+  style: http-status
+  validation: 422 returns a JSON map of field -> [messages]
+  ref: errors/import2-problem-types.yml
+rate_limiting:
+  limit: 10 requests per second (global)
+  exceeded_status: 429
+  ref: rate-limits/import2-rate-limits.yml
+content_type: application/json

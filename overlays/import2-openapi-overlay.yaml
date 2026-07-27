@@ -1,0 +1,20 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Import2 API
+  version: 1.0.0
+extends: openapi/import2-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-rating: 3
+      x-apievangelist-source: https://import2.github.io/
+  - target: $.info
+    update:
+      x-artifacts:
+        authentication: authentication/import2-authentication.yml
+        errors: errors/import2-problem-types.yml
+        rate-limits: rate-limits/import2-rate-limits.yml
+        conventions: conventions/import2-conventions.yml
+        lifecycle: lifecycle/import2-lifecycle.yml
+        data-model: data-model/import2-data-model.yml
+        sandbox: sandbox/import2-sandbox.yml

@@ -1,0 +1,12 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/import2-openapi.yml
+skills:
+  - file: import2-run-migration.md
+    name: Run an Import2 data migration
+    api: openapi/import2-openapi.yml
+    operations: [listTools, createImport, getImport, acceptImportPayment]
+  - file: import2-check-migration-status.md
+    name: Check Import2 migration status
+    api: openapi/import2-openapi.yml
+    operations: [listImports, getImport]

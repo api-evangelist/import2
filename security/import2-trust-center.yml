@@ -1,0 +1,16 @@
+generated: '2026-07-19'
+method: searched
+probe: true
+source: https://trust.import2.com/
+url: https://trust.import2.com/
+certifications:
+- SOC 2 Type II
+- GDPR
+- CCPA
+evidence:
+- source: https://trust.import2.com/
+  keywords:
+  - soc 2
+  - soc2
+  - trust center
+  - gdpr

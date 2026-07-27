@@ -1,0 +1,312 @@
+openapi: 3.0.3
+info:
+  title: Import2 API
+  version: '2.1'
+  description: >-
+    The Import2 API lets partners and vendors programmatically create and manage
+    automated data migrations between SaaS applications. It exposes the catalog of
+    supported source/destination tools and the lifecycle of an import job — create,
+    list, check status, and accept or reject a sponsored (vendor-paid) migration.
+    Authentication is HTTP Basic using an API token as the username. API tokens are
+    issued to partners on request (partners@import2.com).
+  contact:
+    name: Import2 Partners
+    email: partners@import2.com
+    url: https://partners.import2.com/
+  x-apievangelist-provenance:
+    generated: '2026-07-19'
+    method: generated
+    source: https://import2.github.io/
+    note: >-
+      Authored faithfully from Import2's published API reference at
+      https://import2.github.io/ (Import2 API v2.1). No provider-published OpenAPI
+      exists; fields, endpoints, auth, error codes, and rate limits transcribed
+      from the public docs. Not fabricated.
+servers:
+  - url: https://www.import2.com/api/v2.1
+    description: Production
+  - url: https://www.import2.com/api/sandbox
+    description: Sandbox
+security:
+  - basicAuth: []
+tags:
+  - name: Tools
+    description: Supported source and destination migration tools.
+  - name: Imports
+    description: Create and manage data migration (import) jobs.
+paths:
+  /tools:
+    get:
+      operationId: listTools
+      summary: List supported tools
+      description: Returns the list of supported data source/destination tools, optionally filtered by product family.
+      tags:
+        - Tools
+      parameters:
+        - name: family
+          in: query
+          required: false
+          description: Filter tools by product family (e.g. crm, helpdesk).
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of supported tools.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tool'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /imports:
+    post:
+      operationId: createImport
+      summary: Create an import
+      description: Creates a new data migration (import) job for a source tool and optional destination credentials.
+      tags:
+        - Imports
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportCreateRequest'
+      responses:
+        '201':
+          description: Import created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportCreated'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+    get:
+      operationId: listImports
+      summary: List imports
+      description: Lists imports for a given destination username.
+      tags:
+        - Imports
+      parameters:
+        - name: destination_username
+          in: query
+          required: true
+          description: The destination account username whose imports should be listed.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of imports.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ImportSummary'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /imports/{id}:
+    get:
+      operationId: getImport
+      summary: Get import status
+      description: Retrieves the status and progress of a single import job.
+      tags:
+        - Imports
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The import identifier.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The import job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Import'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /imports/{id}/payment/accept:
+    post:
+      operationId: acceptImportPayment
+      summary: Accept sponsored migration
+      description: Accepts the sponsorship (vendor-paid) obligation for the import job.
+      tags:
+        - Imports
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The import identifier.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Sponsorship accepted (empty body).
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /imports/{id}/payment/reject:
+    post:
+      operationId: rejectImportPayment
+      summary: Reject sponsored migration
+      description: Rejects the sponsorship (vendor-paid) obligation for the import job.
+      tags:
+        - Imports
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The import identifier.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Sponsorship rejected (empty body).
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic Authentication. Supply the API token as the username and any
+        value (e.g. "X") as the password. Example: curl -u <api_token>:X.
+  responses:
+    BadRequest:
+      description: Bad syntax in the request.
+    Unauthorized:
+      description: Missing or invalid API token.
+    NotFound:
+      description: The import was not found, archived, or cancelled.
+    ValidationError:
+      description: Validation failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ValidationErrors'
+    RateLimited:
+      description: Rate limit exceeded (more than 10 requests per second).
+  schemas:
+    Tool:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Machine name of the tool (e.g. "highrise").
+          example: highrise
+        label:
+          type: string
+          description: Human-readable tool label.
+          example: Highrise
+    ImportCreateRequest:
+      type: object
+      required:
+        - source_tool
+      properties:
+        source_tool:
+          type: string
+          description: Machine name of the source tool to migrate from.
+          example: highrise
+        destination_instance_url:
+          type: string
+          description: Destination instance URL, when the destination requires one.
+        destination_username:
+          type: string
+          description: Destination account username.
+        destination_token:
+          type: string
+          description: Destination account API token/credential.
+        start_full:
+          type: boolean
+          description: When true, begins a full migration rather than a sample.
+        family:
+          type: string
+          description: Product family for the migration (e.g. crm, helpdesk).
+    ImportCreated:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The import identifier.
+        token:
+          type: string
+          description: The import token.
+        redirect_url:
+          type: string
+          description: URL to redirect the user into the migration portal to continue.
+    ImportSummary:
+      type: object
+      properties:
+        id:
+          type: string
+        token:
+          type: string
+        status:
+          $ref: '#/components/schemas/ImportStatus'
+        items:
+          type: integer
+          description: Count of records/items in the migration.
+        users:
+          type: integer
+          description: Count of users involved in the migration.
+    Import:
+      type: object
+      properties:
+        id:
+          type: string
+        token:
+          type: string
+        status:
+          $ref: '#/components/schemas/ImportStatus'
+        family:
+          type: string
+        items:
+          type: integer
+        users:
+          type: integer
+    ImportStatus:
+      type: string
+      description: Lifecycle status of the import job.
+      enum:
+        - Collecting credentials
+        - Waiting to start sample migration
+        - Sample migration in progress
+        - Sample migration completed
+        - Migration in progress
+        - Migration completed
+        - Undo in progress
+        - Migration cleaned
+        - In preparation
+    ValidationErrors:
+      type: object
+      description: Map of field names to validation error messages.
+      additionalProperties:
+        type: array
+        items:
+          type: string

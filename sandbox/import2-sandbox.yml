@@ -1,0 +1,11 @@
+generated: '2026-07-19'
+method: searched
+source: https://import2.github.io/
+sandbox:
+  base_url: https://www.import2.com/api/sandbox
+  description: >-
+    Import2 exposes a sandbox base path that mirrors the production API surface for
+    testing integrations without running a real migration.
+  auth: Same HTTP Basic API-token scheme as production.
+test_values:
+  note: No published magic test identifiers or fixture values were found in the public reference.

@@ -1,0 +1,24 @@
+# Import2
+
+> Import2 is a fully automated data-migration platform that moves customer data between SaaS applications (CRM, helpdesk, and project-management tools) without CSVs or custom development. The Import2 API v2.1 lets partners and vendors programmatically create and track migration jobs.
+
+## APIs
+
+- [Import2 API v2.1 Reference](https://import2.github.io/): HTTP Basic auth; base URL https://www.import2.com/api/v2.1 (sandbox https://www.import2.com/api/sandbox). Endpoints for supported tools and import lifecycle.
+
+## Specs
+
+- [OpenAPI (API Evangelist)](openapi/import2-openapi.yml): Import2 API v2.1 authored from the published reference.
+- [Authentication](authentication/import2-authentication.yml): HTTP Basic (API token as username).
+- [Error catalog](errors/import2-problem-types.yml): 400/401/404/422/429 semantics.
+- [Rate limits](rate-limits/import2-rate-limits.yml): 10 requests/second global.
+- [Conventions](conventions/import2-conventions.yml): auth, versioning, errors, rate limiting.
+- [Data model](data-model/import2-data-model.yml): Tool and Import entities.
+
+## Docs
+
+- [Help Center](https://help.import2.com/): migration product documentation.
+- [Pricing](https://www.import2.com/pricing): CRM and helpdesk migration plans.
+- [Partners portal](https://partners.import2.com/): vendor/partner program.
+- [Trust Center](https://trust.import2.com/): SOC 2 Type II, GDPR, CCPA.
+- [Blog / Insights](https://www.import2.com/import2insights): data-migration articles.

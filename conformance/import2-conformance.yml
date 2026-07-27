@@ -1,0 +1,24 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/import2-openapi.yml
+standards:
+  - id: http-basic-auth
+    conforms: true
+    evidence: openapi securityScheme type http scheme basic
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: errors use plain HTTP status codes; 422 returns a field->messages map, not application/problem+json
+  - id: oauth2
+    conforms: false
+  - id: rate-limiting
+    conforms: true
+    evidence: documented global 10 req/sec limit with HTTP 429
+  - id: soc2-type-ii
+    conforms: true
+    evidence: SOC 2 Type II reported on https://trust.import2.com/
+  - id: gdpr
+    conforms: true
+    evidence: GDPR reported on https://trust.import2.com/
+  - id: ccpa
+    conforms: true
+    evidence: CCPA reported on https://trust.import2.com/

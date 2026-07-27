@@ -1,0 +1,16 @@
+{
+  "provider": "import2",
+  "sources": [
+    "import2-imports-api-openapi.yml",
+    "import2-tools-api-openapi.yml"
+  ],
+  "outputs": [
+    "import2-imports-api-openapi.yml",
+    "import2-tools-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

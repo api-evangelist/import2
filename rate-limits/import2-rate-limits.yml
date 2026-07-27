@@ -1,0 +1,15 @@
+generated: '2026-07-19'
+method: searched
+source: https://import2.github.io/
+docs: https://import2.github.io/
+rate_limits:
+  - scope: global
+    description: The API allows up to 10 requests per second across all endpoints.
+    limit_count: 10
+    window: 1s
+    exceeded_status: 429
+    applies_to: all endpoints
+signaling:
+  exceeded_status: 429
+  headers: []
+  note: No rate-limit headers (RateLimit-*/Retry-After) are documented in the public reference.

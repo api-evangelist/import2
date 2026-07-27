@@ -1,20 +1,68 @@
 aid: import2
 name: Import2
-description: Import2 is a company surfaced as a portfolio company of 500-global and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Import2 is a fully automated data-migration platform that moves customer data
+  between SaaS applications — CRM, helpdesk, and project-management tools — without
+  CSV exports or custom development. Users connect a source and destination app and
+  Import2 moves records, custom fields, pipelines, and deal stages directly over each
+  app's API, processing data in real time on a temporary machine that is destroyed
+  after the migration. It supports 50+ tools (Salesforce, HubSpot, Zendesk, Pipedrive,
+  Asana, Monday.com, Jira and more) and offers a free sample migration before a full
+  run. Import2 also exposes a partner/vendor API (v2.1) so SaaS vendors can create and
+  track automated migrations programmatically, plus sibling tools ViaCSV and MyCRMBackup.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.prod.website-files.com/698e5a4787478ca03bb07614/699307813937eab1c0993d3d_webclip.png
 url: https://raw.githubusercontent.com/api-evangelist/import2/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - 500-global
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enriched-from-public-surface
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-apis: []
+- Data Migration
+- Data Integration
+- CRM
+- Helpdesk
+- SaaS
+- Migration
+- Onboarding
+apis:
+- aid: import2:import2-imports-api
+  name: Import2 Imports API
+  description: Create and manage data migration (import) jobs.
+  humanURL: https://import2.github.io/
+  baseURL: https://www.import2.com/api/v2.1
+  tags:
+  - Imports
+  properties:
+  - type: OpenAPI
+    url: openapi/import2-imports-api-openapi.yml
+- aid: import2:import2-tools-api
+  name: Import2 Tools API
+  description: Supported source and destination migration tools.
+  humanURL: https://import2.github.io/
+  baseURL: https://www.import2.com/api/v2.1
+  tags:
+  - Tools
+  properties:
+  - type: OpenAPI
+    url: openapi/import2-tools-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -22,4 +70,57 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://import2.com
+  url: https://www.import2.com
+- type: Portal
+  url: https://partners.import2.com/
+- type: Documentation
+  url: https://help.import2.com/
+- type: APIReference
+  url: https://import2.github.io/
+- type: GettingStarted
+  url: https://www.import2.com/how-it-works
+- type: Support
+  url: https://help.import2.com/
+- type: Pricing
+  url: https://www.import2.com/pricing
+- type: SignUp
+  url: https://app.import2.com/session/new
+- type: TermsOfService
+  url: https://www.import2.com/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.import2.com/privacy-policy
+- type: GitHubOrganization
+  url: https://github.com/import2
+- type: Authentication
+  url: authentication/import2-authentication.yml
+- type: ErrorCatalog
+  url: errors/import2-problem-types.yml
+- type: RateLimits
+  url: rate-limits/import2-rate-limits.yml
+- type: Lifecycle
+  url: lifecycle/import2-lifecycle.yml
+- type: Conventions
+  url: conventions/import2-conventions.yml
+- type: DataModel
+  url: data-model/import2-data-model.yml
+- type: Sandbox
+  url: sandbox/import2-sandbox.yml
+- type: Conformance
+  url: conformance/import2-conformance.yml
+- type: Compliance
+  url: https://trust.import2.com/
+- type: TrustCenter
+  url: security/import2-trust-center.yml
+- type: DomainSecurity
+  url: security/import2-domain-security.yml
+- type: MCPServer
+  url: mcp/import2-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/import2-llms.txt
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

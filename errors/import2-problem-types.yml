@@ -1,0 +1,34 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/import2-openapi.yml
+format: http-status
+docs: https://import2.github.io/
+envelope:
+  description: >-
+    The Import2 API signals failures with standard HTTP status codes. Validation
+    failures (422) return a JSON object mapping field names to arrays of error
+    messages. Other error statuses return a status code without a structured
+    problem-details body (not RFC 9457).
+problems:
+  - status: 400
+    title: Bad Request
+    description: Bad syntax in the request.
+    source_operation: openapi/import2-openapi.yml#createImport
+  - status: 401
+    title: Unauthorized
+    description: Missing or invalid API token (HTTP Basic credential).
+    remediation: Supply a valid API token as the Basic-auth username. Request one at partners@import2.com.
+    source_operation: openapi/import2-openapi.yml#listTools
+  - status: 404
+    title: Not Found
+    description: The import was not found, archived, or cancelled.
+    source_operation: openapi/import2-openapi.yml#getImport
+  - status: 422
+    title: Unprocessable Entity
+    description: Validation failure. Response body is a map of field names to arrays of error messages.
+    source_operation: openapi/import2-openapi.yml#createImport
+  - status: 429
+    title: Too Many Requests
+    description: Rate limit exceeded (more than 10 requests per second across all endpoints).
+    remediation: Throttle requests to stay within 10 req/sec and retry.
+    source_operation: openapi/import2-openapi.yml#listImports

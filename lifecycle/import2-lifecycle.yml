@@ -1,0 +1,16 @@
+generated: '2026-07-19'
+method: searched
+source: https://import2.github.io/
+versioning:
+  scheme: uri-path
+  current: v2.1
+  docs: https://import2.github.io/
+  note: Version is carried in the base path (/api/v2.1). A sandbox path (/api/sandbox) mirrors production.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No public deprecation policy or RFC 8594 Sunset/Deprecation header support is documented.
+sla:
+  url: null
+status_page: null
+deprecated_operations: []
