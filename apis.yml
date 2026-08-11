@@ -69,6 +69,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/import2-openapi-overlay.yaml
 - type: Website
   url: https://www.import2.com
 - type: Portal
