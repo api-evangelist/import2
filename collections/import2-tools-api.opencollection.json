@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Import2 Imports Tools API",
+    "version": "2.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tools",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List supported tools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.import2.com/api/v2.1/tools",
+            "params": [
+              {
+                "name": "family",
+                "value": "",
+                "type": "query",
+                "description": "Filter tools by product family (e.g. crm, helpdesk)."
+              }
+            ]
+          },
+          "docs": "Returns the list of supported data source/destination tools, optionally filtered by product family."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Import2 Imports API",
+    "version": "2.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Imports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List imports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.import2.com/api/v2.1/imports",
+            "params": [
+              {
+                "name": "destination_username",
+                "value": "",
+                "type": "query",
+                "description": "The destination account username whose imports should be listed."
+              }
+            ]
+          },
+          "docs": "Lists imports for a given destination username."
+        },
+        {
+          "info": {
+            "name": "Create an import",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.import2.com/api/v2.1/imports",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new data migration (import) job for a source tool and optional destination credentials."
+        },
+        {
+          "info": {
+            "name": "Get import status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.import2.com/api/v2.1/imports/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The import identifier."
+              }
+            ]
+          },
+          "docs": "Retrieves the status and progress of a single import job."
+        },
+        {
+          "info": {
+            "name": "Accept sponsored migration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.import2.com/api/v2.1/imports/:id/payment/accept",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The import identifier."
+              }
+            ]
+          },
+          "docs": "Accepts the sponsorship (vendor-paid) obligation for the import job."
+        },
+        {
+          "info": {
+            "name": "Reject sponsored migration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.import2.com/api/v2.1/imports/:id/payment/reject",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The import identifier."
+              }
+            ]
+          },
+          "docs": "Rejects the sponsorship (vendor-paid) obligation for the import job."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
