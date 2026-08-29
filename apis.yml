@@ -10,6 +10,18 @@ description: >-
   Asana, Monday.com, Jira and more) and offers a free sample migration before a full
   run. Import2 also exposes a partner/vendor API (v2.1) so SaaS vendors can create and
   track automated migrations programmatically, plus sibling tools ViaCSV and MyCRMBackup.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
