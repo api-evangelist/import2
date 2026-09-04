@@ -24,15 +24,18 @@ deliveryModel:
   method: derived
 accessModel:
   pricing: unknown
-  onboarding: self-serve
+  onboarding: unknown
   trial: false
   try_now: false
   public: false
-  label: Self-serve signup
-  confidence: medium
+  label: Unknown
+  confidence: low
   source:
   - authentication
-  generated: '2026-07-22'
+  - rate-limits
+  - security
+  - sandbox
+  generated: '2026-09-03'
   method: derived
 image: https://cdn.prod.website-files.com/698e5a4787478ca03bb07614/699307813937eab1c0993d3d_webclip.png
 url: https://raw.githubusercontent.com/api-evangelist/import2/refs/heads/main/apis.yml
@@ -136,8 +139,9 @@ common:
   url: security/import2-trust-center.yml
 - type: DomainSecurity
   url: security/import2-domain-security.yml
-- type: MCPServer
+- type: X-MCPServerCandidate
   url: mcp/import2-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
 - type: AgentSkill
   url: skills/_index.yml
 - type: LLMsTxt
