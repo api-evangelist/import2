@@ -73,6 +73,8 @@ apis:
   humanURL: https://import2.github.io/
   baseURL: https://www.import2.com/api/v2.1
   tags:
+  - Import
+  tags_raw:
   - Imports
   properties:
   - type: OpenAPI
