@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Import2 Imports API
   version: '2.1'
@@ -151,49 +151,7 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
-  responses:
-    NotFound:
-      description: The import was not found, archived, or cancelled.
-    Unauthorized:
-      description: Missing or invalid API token.
-    ValidationError:
-      description: Validation failure.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ValidationErrors'
-    BadRequest:
-      description: Bad syntax in the request.
-    RateLimited:
-      description: Rate limit exceeded (more than 10 requests per second).
   schemas:
-    ImportCreated:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The import identifier.
-        token:
-          type: string
-          description: The import token.
-        redirect_url:
-          type: string
-          description: URL to redirect the user into the migration portal to continue.
-    Import:
-      type: object
-      properties:
-        id:
-          type: string
-        token:
-          type: string
-        status:
-          $ref: '#/components/schemas/ImportStatus'
-        family:
-          type: string
-        items:
-          type: integer
-        users:
-          type: integer
     ImportCreateRequest:
       type: object
       required:
@@ -218,6 +176,18 @@ components:
         family:
           type: string
           description: Product family for the migration (e.g. crm, helpdesk).
+    ImportCreated:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The import identifier.
+        token:
+          type: string
+          description: The import token.
+        redirect_url:
+          type: string
+          description: URL to redirect the user into the migration portal to continue.
     ValidationErrors:
       type: object
       description: Map of field names to validation error messages.
@@ -225,6 +195,21 @@ components:
         type: array
         items:
           type: string
+    Import:
+      type: object
+      properties:
+        id:
+          type: string
+        token:
+          type: string
+        status:
+          $ref: '#/components/schemas/ImportStatus'
+        family:
+          type: string
+        items:
+          type: integer
+        users:
+          type: integer
     ImportSummary:
       type: object
       properties:
@@ -253,6 +238,21 @@ components:
       - Undo in progress
       - Migration cleaned
       - In preparation
+  responses:
+    NotFound:
+      description: The import was not found, archived, or cancelled.
+    ValidationError:
+      description: Validation failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ValidationErrors'
+    Unauthorized:
+      description: Missing or invalid API token.
+    RateLimited:
+      description: Rate limit exceeded (more than 10 requests per second).
+    BadRequest:
+      description: Bad syntax in the request.
   securitySchemes:
     basicAuth:
       type: http

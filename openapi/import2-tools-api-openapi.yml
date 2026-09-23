@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Import2 Imports Tools API
+  title: Import2 Tools API
   version: '2.1'
   description: The Import2 API lets partners and vendors programmatically create and manage automated data migrations between SaaS applications. It exposes the catalog of supported source/destination tools and the lifecycle of an import job — create, list, check status, and accept or reject a sponsored (vendor-paid) migration. Authentication is HTTP Basic using an API token as the username. API tokens are issued to partners on request (partners@import2.com).
   contact:
@@ -52,10 +52,10 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   responses:
-    Unauthorized:
-      description: Missing or invalid API token.
     RateLimited:
       description: Rate limit exceeded (more than 10 requests per second).
+    Unauthorized:
+      description: Missing or invalid API token.
   schemas:
     Tool:
       type: object

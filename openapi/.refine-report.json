@@ -1,8 +1,7 @@
 {
   "provider": "import2",
   "sources": [
-    "import2-imports-api-openapi.yml",
-    "import2-tools-api-openapi.yml"
+    "_original/import2-openapi.yml"
   ],
   "outputs": [
     "import2-imports-api-openapi.yml",
@@ -11,6 +10,13 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "import2-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "import2-imports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "import2-tools-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
