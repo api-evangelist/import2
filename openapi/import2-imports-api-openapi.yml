@@ -152,33 +152,36 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   responses:
+    Unauthorized:
+      description: Missing or invalid API token.
+    RateLimited:
+      description: Rate limit exceeded (more than 10 requests per second).
     ValidationError:
       description: Validation failure.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ValidationErrors'
-    BadRequest:
-      description: Bad syntax in the request.
     NotFound:
       description: The import was not found, archived, or cancelled.
-    Unauthorized:
-      description: Missing or invalid API token.
-    RateLimited:
-      description: Rate limit exceeded (more than 10 requests per second).
+    BadRequest:
+      description: Bad syntax in the request.
   schemas:
-    ImportCreated:
+    ImportSummary:
       type: object
       properties:
         id:
           type: string
-          description: The import identifier.
         token:
           type: string
-          description: The import token.
-        redirect_url:
-          type: string
-          description: URL to redirect the user into the migration portal to continue.
+        status:
+          $ref: '#/components/schemas/ImportStatus'
+        items:
+          type: integer
+          description: Count of records/items in the migration.
+        users:
+          type: integer
+          description: Count of users involved in the migration.
     ImportStatus:
       type: string
       description: Lifecycle status of the import job.
@@ -192,6 +195,33 @@ components:
       - Undo in progress
       - Migration cleaned
       - In preparation
+    Import:
+      type: object
+      properties:
+        id:
+          type: string
+        token:
+          type: string
+        status:
+          $ref: '#/components/schemas/ImportStatus'
+        family:
+          type: string
+        items:
+          type: integer
+        users:
+          type: integer
+    ImportCreated:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The import identifier.
+        token:
+          type: string
+          description: The import token.
+        redirect_url:
+          type: string
+          description: URL to redirect the user into the migration portal to continue.
     ImportCreateRequest:
       type: object
       required:
@@ -216,21 +246,6 @@ components:
         family:
           type: string
           description: Product family for the migration (e.g. crm, helpdesk).
-    Import:
-      type: object
-      properties:
-        id:
-          type: string
-        token:
-          type: string
-        status:
-          $ref: '#/components/schemas/ImportStatus'
-        family:
-          type: string
-        items:
-          type: integer
-        users:
-          type: integer
     ValidationErrors:
       type: object
       description: Map of field names to validation error messages.
@@ -238,21 +253,6 @@ components:
         type: array
         items:
           type: string
-    ImportSummary:
-      type: object
-      properties:
-        id:
-          type: string
-        token:
-          type: string
-        status:
-          $ref: '#/components/schemas/ImportStatus'
-        items:
-          type: integer
-          description: Count of records/items in the migration.
-        users:
-          type: integer
-          description: Count of users involved in the migration.
   securitySchemes:
     basicAuth:
       type: http

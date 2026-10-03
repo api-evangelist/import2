@@ -51,6 +51,11 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid API token.
+    RateLimited:
+      description: Rate limit exceeded (more than 10 requests per second).
   schemas:
     Tool:
       type: object
@@ -63,11 +68,6 @@ components:
           type: string
           description: Human-readable tool label.
           example: Highrise
-  responses:
-    Unauthorized:
-      description: Missing or invalid API token.
-    RateLimited:
-      description: Rate limit exceeded (more than 10 requests per second).
   securitySchemes:
     basicAuth:
       type: http
