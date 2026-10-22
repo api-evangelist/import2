@@ -101,3 +101,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: import2-pipedrive-own
+  label: Pipedrive (own)
+  partner: pipedrive
+  partner_name: Pipedrive (own)
+  category: Other use cases
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.pipedrive.com/en/marketplace/app/import-2/bf7972b87b5a9861
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
