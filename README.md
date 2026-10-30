@@ -64,6 +64,121 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Import2 is a company surfaced as a portfolio company of 500-global and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Import2 is a fully automated data-migration platform that moves customer data between SaaS applications — CRM, helpdesk, and project-management tools — without CSV exports or custom development. Users connect a source and destination app and Import2 moves records, custom fields, pipelines, and deal stages directly over each app's API, processing data in real time on a temporary machine that is destroyed after the migration. It supports 50+ tools (Salesforce, HubSpot, Zendesk, Pipedrive, Asana, Monday.com, Jira and more) and offers a free sample migration before a full run. Import2 also exposes a partner/vendor API (v2.1) so SaaS vendors can create and track automated migrations programmatically, plus sibling tools ViaCSV and MyCRMBackup.
 
-Backed by: 500-global — https://import2.com
+**Areas:** Company · Data Migration · Data Integration · CRM · Help Desk · Software-as-a-Service · Migration · Onboarding
+
+## Import2 on APIs.io
+
+Everything profiled for Import2 is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/import2/](https://apis.io/providers/import2/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [Import2 Imports API](https://apis.io/apis/import2/import2-imports-api/) — Create and manage data migration (import) jobs.
+- [Import2 Tools API](https://apis.io/apis/import2/import2-tools-api/) — Supported source and destination migration tools.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [import2](https://apis.io/servers/import2/import2/)
+
+#### Collections (2)
+
+Postman and Open Collection request collections.
+
+- [Import2 Imports API](https://apis.io/collections/import2/open-import2-imports-api/)
+- [Import2 Imports Tools API](https://apis.io/collections/import2/open-import2-tools-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Import2 Openapi Overlay](https://apis.io/overlays/import2/import2-openapi-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Import2 Authentication](https://apis.io/security/import2/import2-authentication/)
+- [Import2 Domain Security](https://apis.io/security/import2/import2-domain-security/)
+- [Import2 Trust Center](https://apis.io/security/import2/import2-trust-center/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Import2 Rate Limits](https://apis.io/rate-limits/import2/import2-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.import2.com)
+- [Documentation](https://help.import2.com/)
+- [Getting started](https://www.import2.com/how-it-works)
+- [API reference](https://import2.github.io/)
+- [Pricing](https://www.import2.com/pricing)
+- [Sign up](https://app.import2.com/session/new)
+- [Support](https://help.import2.com/)
+- [Compliance](https://trust.import2.com/)
+- [Terms of service](https://www.import2.com/terms-of-service)
+- [Privacy policy](https://www.import2.com/privacy-policy)
+- [GitHub](https://github.com/import2)
+
+## API Evangelist rating
+
+**Kin Score 38.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 14.2 |
+| Contract governance | 4.5 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 63.7 |
+| Access clarity | 52.6 |
+
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/import2/](https://apis.io/providers/import2/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Import2: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/import2/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
